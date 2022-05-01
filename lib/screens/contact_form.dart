@@ -24,7 +24,9 @@ class _ContactFormState extends State<ContactForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color.fromARGB(255, 29, 27, 27),
         appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 4, 58, 6),
           title: Text('New Contact'),
         ),
         body: Padding(
@@ -38,9 +40,7 @@ class _ContactFormState extends State<ContactForm> {
                   decoration: InputDecoration(
                     labelText: 'Full name',
                   ),
-                  style: TextStyle(
-                    fontSize: 24.0,
-                  ),
+                  style: TextStyle(fontSize: 24.0, color: Colors.white),
                 ),
               ),
               TextField(
@@ -50,6 +50,7 @@ class _ContactFormState extends State<ContactForm> {
                 ),
                 style: TextStyle(
                   fontSize: 24.0,
+                  color: Colors.white,
                 ),
                 keyboardType: TextInputType.number,
               ),

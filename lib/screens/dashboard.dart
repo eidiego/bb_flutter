@@ -7,7 +7,9 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 29, 27, 27),
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 4, 58, 6),
         title: const Text('Dashboard'),
       ),
       body: Column(
