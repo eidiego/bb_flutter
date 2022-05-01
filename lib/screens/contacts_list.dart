@@ -1,3 +1,4 @@
+import 'package:appbk2/database/app_database.dart';
 import 'package:flutter/material.dart';
 
 import '../models/contact.dart';
@@ -6,21 +7,24 @@ import 'contact_form.dart';
 class ContactsList extends StatelessWidget {
   ContactsList({Key? key}) : super(key: key);
 
-  final List<Contact> contacts = [];
-
   @override
   Widget build(BuildContext context) {
-    contacts.add(Contact(0, 'Diego ', 1200));
     return Scaffold(
       appBar: AppBar(
         title: const Text('Contacts'),
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) {
-          final Contact contact = contacts[index];
-          return _ContactItem(contact);
+      body: FutureBuilder(
+        future: findAll(),
+        builder: (context, snapshot) {
+          final List<Contact> contacts = snapshot.data;
+          return ListView.builder(
+            itemBuilder: (context, index) {
+              final Contact contact = contacts[index];
+              return _ContactItem(contact);
+            },
+            itemCount: contacts.length,
+          );
         },
-        itemCount: contacts.length,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
