@@ -3,11 +3,11 @@
 import 'package:flutter/material.dart';
 
 import '../dao/contact_dao.dart';
-import '../database/app_database.dart';
+
 import '../models/contact.dart';
 
 class ContactForm extends StatefulWidget {
-  ContactForm({Key? key}) : super(key: key);
+  const ContactForm({Key? key}) : super(key: key);
 
   @override
   State<ContactForm> createState() => _ContactFormState();

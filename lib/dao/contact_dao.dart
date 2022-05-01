@@ -1,7 +1,6 @@
 import '../database/app_database.dart';
 import '../models/contact.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
 
 class ContactDao {
   static const String tableSql = 'CREATE TABLE $_tableName('
@@ -21,7 +20,7 @@ class ContactDao {
   }
 
   Map<String, dynamic> _toMap(Contact contact) {
-    final Map<String, dynamic> contactMap = Map();
+    final Map<String, dynamic> contactMap = {};
     contactMap[_name] = contact.name;
     contactMap[_accountNumber] = contact.accountNumber;
     return contactMap;
