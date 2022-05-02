@@ -20,20 +20,33 @@ class Dashboard extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Image.asset('images/bytebank_logo.png'),
           ),
-          Row(
-            children: [
-              _FeatureItem(
-                'Transfer',
-                Icons.monetization_on,
-              ),
-              _FeatureItem(
-                'Transaction Feed',
-                Icons.description,
-              ),
-            ],
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                _FeatureItem(
+                  'Transfer',
+                  Icons.monetization_on,
+                  onClick: () {
+                    _showContactsList(context);
+                  },
+                ),
+                _FeatureItem(
+                  'Transaction Feed',
+                  Icons.description,
+                  onClick: () => print('Transaction was clicked'),
+                ),
+              ],
+            ),
           ),
         ],
       ),
+    );
+  }
+
+  void _showContactsList(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (context) => const ContactsList()),
     );
   }
 }
@@ -41,8 +54,13 @@ class Dashboard extends StatelessWidget {
 class _FeatureItem extends StatelessWidget {
   final String name;
   final IconData icon;
+  final Function? onClick;
 
-  const _FeatureItem(this.name, this.icon);
+  const _FeatureItem(
+    this.name,
+    this.icon, {
+    @required this.onClick,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -51,16 +69,10 @@ class _FeatureItem extends StatelessWidget {
       child: Material(
         color: Theme.of(context).primaryColor,
         child: InkWell(
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const ContactsList(),
-              ),
-            );
-          },
+          onTap: () => onClick!(),
           child: Container(
             padding: const EdgeInsets.all(8.0),
-            width: 180,
+            width: 160,
             height: 80,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,7 +85,7 @@ class _FeatureItem extends StatelessWidget {
                 ),
                 Text(
                   name,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18.0,
                   ),
