@@ -20,41 +20,68 @@ class Dashboard extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Image.asset('images/bytebank_logo.png'),
           ),
-          Padding(
+          Row(
+            children: [
+              _FeatureItem(
+                'Transfer',
+                Icons.monetization_on,
+              ),
+              _FeatureItem(
+                'Transaction Feed',
+                Icons.description,
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _FeatureItem extends StatelessWidget {
+  final String name;
+  final IconData icon;
+
+  const _FeatureItem(this.name, this.icon);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Material(
+        color: Theme.of(context).primaryColor,
+        child: InkWell(
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const ContactsList(),
+              ),
+            );
+          },
+          child: Container(
             padding: const EdgeInsets.all(8.0),
-            child: Material(
-              color: Theme.of(context).primaryColor,
-              child: InkWell(
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const ContactsList(),
-                    ),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8.0),
-                  width: 150,
-                  height: 80,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const <Widget>[
-                      Icon(Icons.people, color: Colors.white, size: 28),
-                      Text(
-                        'Contacts',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
-                        ),
-                      ),
-                    ],
+            width: 180,
+            height: 80,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Icon(
+                  icon,
+                  color: Colors.white,
+                  size: 28,
+                ),
+                Text(
+                  name,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
                   ),
                 ),
-              ),
+              ],
             ),
-          )
-        ],
+          ),
+        ),
       ),
     );
   }

@@ -19,7 +19,7 @@ class _ContactsListState extends State<ContactsList> {
       backgroundColor: const Color.fromARGB(255, 29, 27, 27),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 4, 58, 6),
-        title: const Text('Contacts'),
+        title: const Text('Transfer'),
       ),
       body: FutureBuilder<List<Contact>>(
         initialData: const [],
