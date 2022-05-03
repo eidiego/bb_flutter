@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../models/contact.dart';
 import '../models/transaction.dart';
 
 class TransactionsList extends StatelessWidget {

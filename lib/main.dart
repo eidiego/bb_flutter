@@ -5,7 +5,7 @@ import 'screens/dashboard.dart';
 
 void main() {
   runApp(const ByteBankApp());
-  findAll();
+  findAll().then((transactions) => print('new Transactions ${transactions}'));
 }
 
 class ByteBankApp extends StatelessWidget {
