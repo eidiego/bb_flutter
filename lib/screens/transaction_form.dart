@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../http/webclient.dart';
 import '../models/contact.dart';
 import '../models/transaction.dart';
 
@@ -63,6 +64,11 @@ class _TransactionFormState extends State<TransactionForm> {
                           double.tryParse(_valueController.text);
                       final transactionCreated =
                           Transaction(value!, widget.contact);
+                      save(transactionCreated).then((transaction) {
+                        if (transaction != null) {
+                          Navigator.pop(context);
+                        }
+                      });
                     },
                   ),
                 ),
