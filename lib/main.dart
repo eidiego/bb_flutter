@@ -7,8 +7,6 @@ import 'screens/dashboard.dart';
 
 void main() {
   runApp(const ByteBankApp());
-  save(Transaction(200.0, Contact(0, 'Diego', 2000)))
-      .then((transaction) => print(transaction));
 }
 
 class ByteBankApp extends StatelessWidget {
