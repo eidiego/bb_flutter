@@ -14,16 +14,7 @@ class TransactionWebClient {
     final List<dynamic> decodedJson = jsonDecode(response.body);
     final List<Transaction> transactions = [];
     for (Map<String, dynamic> transactionJson in decodedJson) {
-      final Map<String, dynamic> ContactJson = transactionJson['contact'];
-      final Transaction transaction = Transaction(
-        transactionJson['value'],
-        Contact(
-          0,
-          ContactJson['name'],
-          ContactJson['accountNumber'],
-        ),
-      );
-      transactions.add(transaction);
+      transactions.add(Transaction.fromJson(transactionJson));
     }
     return transactions;
   }

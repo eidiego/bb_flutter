@@ -1,5 +1,5 @@
 class Contact {
-  final int id;
+  final int? id;
   final String name;
   final int? accountNumber;
 
@@ -12,4 +12,9 @@ class Contact {
   String toString() {
     return 'Contact{id: $id,name: $name, accountNumber: $accountNumber}';
   }
+
+  Contact.fromJson(Map<String, dynamic> json)
+      : id = json['id'],
+        name = json['name'],
+        accountNumber = json['accountNumber'];
 }
